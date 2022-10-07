@@ -1,0 +1,19 @@
+@import '../../styles/colors.less';
+@import '../../styles/mixins.less';
+
+.header {
+    background-color: @white;
+
+    &__container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        .mx-block-container();
+        gap: 0.875rem;
+    }
+
+    &__btns {
+        display: flex;
+        gap: 0.625rem;
+    }
+}

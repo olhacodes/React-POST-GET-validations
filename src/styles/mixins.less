@@ -1,0 +1,30 @@
+@import './resolutions.less';
+@import './variables.less';
+
+.mx-block-container {
+  margin: 0 auto;
+  
+  @media @mobile {
+    min-width: @mobile-min-width;
+    max-width: @mobile-max-width;
+    padding: 0.8125rem 1rem;
+  }
+
+   @media @tablet {
+    min-width: @tablet-min-width;
+    max-width: @tablet-max-width;
+    padding: 0.8125rem 2rem;
+  }
+
+   @media @small-desktop {
+    min-width: @small-desktop-min-width;
+    max-width: @small-desktop-max-width;
+    padding: 0.8125rem 3.75rem;
+  }
+
+  @media @desktop {
+    min-width: @desktop-min-width;
+    max-width: @desktop-max-width;
+    padding: 0.8125rem 0rem;
+  }
+}
