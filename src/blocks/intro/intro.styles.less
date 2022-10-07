@@ -1,0 +1,28 @@
+@import '../../styles/mixins.less';
+@import '../../styles/colors.less';
+
+.intro {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    color: @white;
+    text-align: center;
+
+    &__container {
+        .mx-block-container();
+        padding: 0;
+    }
+
+    &__inner {
+        .inner();
+        
+        h1 {
+        .h1();
+    }
+
+    p {
+        margin: 1.3125rem 0 2rem;
+    }
+
+    }
+}
