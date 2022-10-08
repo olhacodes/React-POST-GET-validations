@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect } from 'react'; 
+import React, { createContext, useState, useEffect, useRef } from 'react'; 
 
 export const UsersContext = createContext({});
 
@@ -7,6 +7,7 @@ function UsersContextProvider({ children }) {
     const [setError] = useState(null);
     const [users, setUsers] = useState([]);
     const [page, setPage] = useState(1);
+    const myRef = useRef(null)
     
   useEffect(() => {
          const getUsersFromAPI = async () => {
@@ -39,7 +40,8 @@ function UsersContextProvider({ children }) {
       setUsers,
       loading,
       loadMore,
-      page
+      page,
+      myRef
     }
 
   return (

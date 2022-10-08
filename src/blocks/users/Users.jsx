@@ -6,10 +6,10 @@ import { UsersContext } from '../../context/UsersContext';
 import './users.styles.less';
 
 function Users() {
-    const { users, loadMore, page } = useContext(UsersContext);
+    const { users, loadMore, page, myRef} = useContext(UsersContext);
     
   return (
-      <div className='users'>
+      <div className='users' ref={myRef}>
             <div className="users__container">
               <h1>Working with GET request</h1>
               <div className="users__cards">

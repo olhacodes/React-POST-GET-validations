@@ -2,6 +2,7 @@ import React from 'react';
 import Header from './components/Header/Header';
 import Intro from './blocks/intro/Intro';
 import Users from './blocks/users/Users';
+import SignUp from './blocks/signUp/SignUp';
 
 function App() {
   return (
@@ -9,7 +10,8 @@ function App() {
       <Header />
     <div className="App">
         <Intro />
-        <Users/>
+        <Users />
+        <SignUp/>
       </div>
     </>
   );
