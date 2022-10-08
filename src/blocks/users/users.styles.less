@@ -1,0 +1,21 @@
+@import '../../styles/mixins.less';
+
+.users {
+    padding: 8.75rem 0;
+
+    &__container {
+        .mx-block-container();
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+
+        h1 {
+            .mx-h1();
+            padding-bottom: 1.875rem;
+        }
+    }
+
+    &__action {
+        margin: 0 auto;
+    }
+}

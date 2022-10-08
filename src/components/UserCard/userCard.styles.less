@@ -1,0 +1,26 @@
+@import '../../styles/colors.less';
+@import '../../styles/mixins.less';
+@import '../../styles/variables.less';
+
+.user-card {
+    background-color: @white;
+    border-radius: 0.625rem;
+
+    &__container {
+        padding: 1.25rem;
+        .mx-flex-center();
+
+        img {
+            width: @user-card-img-width;
+            border-radius: 50%;
+        }
+    }
+
+    &__name {
+        padding: 1.25rem 0;
+    }
+
+    &__info {
+        .mx-flex-center();
+    }
+}
