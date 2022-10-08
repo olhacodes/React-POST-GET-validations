@@ -6,16 +6,18 @@ function UsersContextProvider({ children }) {
     const [loading, setLoading] = useState(false);
     const [setError] = useState(null);
     const [users, setUsers] = useState([]);
+    const [page, setPage] = useState(1);
     
-       useEffect(() => {
-        const getUsersFromAPI = async () => {
+  useEffect(() => {
+         const getUsersFromAPI = async () => {
             setLoading(true);
-            await fetch('https://frontend-test-assignment-api.abz.agency/api/v1/users?page=1&count=6')
+            await fetch(`https://frontend-test-assignment-api.abz.agency/api/v1/users?page=${page}&count=6`)
                 .then(response => response.json())
                 .then(data => {
                   if (data.success === true) {
-                      setUsers(data)
-                      setLoading(false)
+                    setUsers([...users, ...data.users])
+                    setPage(data.page)
+                    setLoading(false)
                       console.log(data, 'in data')
                     }
                 })
@@ -26,17 +28,23 @@ function UsersContextProvider({ children }) {
             })
         }
         getUsersFromAPI()
-    }, [])
+  }, [page])
+  
+  function loadMore() {
+    setPage(page + 1);
+  }
 
     const value = {
       users,
       setUsers,
-      loading
+      loading,
+      loadMore,
+      page
     }
 
   return (
     <UsersContext.Provider value={value}>
-          {children}
+      {children}
     </UsersContext.Provider>
   )
 }
