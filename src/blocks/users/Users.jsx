@@ -12,10 +12,12 @@ function Users() {
       <div className='users'>
           <div className="users__container">
               <h1>Working with GET request</h1>
-              {users.users ? users.users.map(user => (
+              <div className="users__cards">
+                  {users.users ? users.users.map(user => (
                   <UserCard key={user.id} {...user} />))
                   : 
                   <h1>No Users Found</h1>}
+              </div>
               <div className="users__action">
                   <Button>Show more</Button>
               </div>

@@ -1,6 +1,11 @@
 @import '../../styles/colors.less';
 @import '../../styles/mixins.less';
 @import '../../styles/variables.less';
+@import '../../styles/resolutions.less';
+
+@tablet-user-card-width: 21.5rem;
+@small-desktop-user-card-width: 17.625rem;
+@desktop-user-card-width: 23.125rem;
 
 .user-card {
     background-color: @white;
@@ -22,5 +27,24 @@
 
     &__info {
         .mx-flex-center();
+    }
+}
+
+@media @tablet {
+    .user-card {
+        width: @tablet-user-card-width;
+    }
+}
+
+@media @small-desktop {
+    .user-card {
+        gap: 1.8125rem;
+        width: @small-desktop-user-card-width;
+    }
+}
+
+@media @desktop {
+    .user-card {
+        width: @desktop-user-card-width;
     }
 }
