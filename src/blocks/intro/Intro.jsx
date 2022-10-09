@@ -3,7 +3,7 @@ import Button from '../../components/Button/Button';
 import './intro.styles.less';
 
 const introStyle = {
-  backgroundImage: `url('./assets/intro.png')` 
+  backgroundImage: `url('./images/intro.webp')` 
 }
 
 function Intro() {

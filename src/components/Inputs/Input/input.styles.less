@@ -6,16 +6,21 @@
     border-radius: 0.25rem;
     width: -webkit-fill-available;
     padding: 0.875rem 0 0.875rem 1rem;
+    transition: border-color 0.2s;
+
+    &__helper-text {
+        color: @placeholder-color;
+        font-size: 0.75rem;
+        line-height: 0.875rem;
+        margin-top: -3.125rem;
+        padding-left: 5%;
 }
 
-.input__helper-text {
-    color: @placeholder-color;
-    font-size: 0.75rem;
-    line-height: 0.875rem;
-    margin-top: -3.125rem;
+    &__error {
+        border: 0.125rem solid @error-color;
+    }
 }
 
 ::-webkit-file-upload-button {
    display: none;
 }
-

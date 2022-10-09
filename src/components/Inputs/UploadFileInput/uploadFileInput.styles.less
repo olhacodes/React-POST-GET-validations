@@ -2,28 +2,37 @@
 @import '../../../styles/variables.less';
 @import '../../../styles/resolutions.less';
 
+@input-height: 3.37rem;
+
 .upload-input {
         margin-top: 2.9375rem;
 
-    &--wrapper {
+    &__wrapper {
         position: relative;
         background-color: @white;
+        height: @input-height;
+
+        &--uploaded::after {
+        z-index: -99;
+        margin: 0;
     }
 
-    &--wrapper::after {
-        content:attr(dataText);
+    }
+
+    &__wrapper::after {
+        content:attr(data);
         position: absolute;
         font: @font;
         color: @placeholder-color;
-        margin-left: -15.5625rem;
+        margin-left: -60%;
+        width: -webkit-fit-content;
         pointer-events: none;
-        background-color: #FFFFFF;
-        bottom: 0;
-        margin-bottom: 0.875rem;
-        padding: 0.4375rem 1rem;
+        background-color: @white;
+        top: 0;
+        padding: 1rem;
     }
     
-    &--wrapper::before {
+    &__wrapper::before {
         content: 'Upload';
         position: absolute;
         top: 0;
@@ -36,35 +45,39 @@
         border-bottom-left-radius: 0.25rem;
         border-top-left-radius: 0.25rem;
         background-color: @white;
+        z-index: 99;
+    }
+
+    &--input {
+        height: @input-height;
+        color: transparent;
+    }
+
+
+    &--uploaded {
+        color: @black;
+        height: @input-height;
     }
 }
 
-@media(min-width: 22.5625rem) {
-    .upload-input--wrapper {
-        &::before {
-            padding: 0.875rem 1.9375rem;
-        }
-
-        &::after {
-            margin-left: -60%;
-        }
+@media(min-width: 380px) {
+    .upload-input__wrapper::after {
+        margin-left: -55%;
     }
 }
 
 @media @tablet {
-    .upload-input--wrapper::after {
-         margin-left: -83%;
-    }
-}
+    .upload-input {
+        &__wrapper--uploaded::after {
+            display: none;
+        }
 
-@media @small-desktop {
-    .upload-input--wrapper::after {
-         margin-left: -87%;
-    }
-}
+        &--input {
+            padding-left: 5%;
+        }
 
-@media @desktop {
-    .upload-input--wrapper::after {
-         margin-left: -90%;
+        &--uploaded {
+            padding-left: 25%;
+        }
     }
 }

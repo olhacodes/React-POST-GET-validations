@@ -1,3 +1,6 @@
+@import '../../styles/resolutions.less';
+@form-width: 23.75rem;
+
 .form {
     &__inputs {
         display: flex;
@@ -19,5 +22,12 @@
         padding-top: 3.125rem;
         margin: 0 auto;
         width: fit-content;
+    }
+}
+
+@media @tablet {
+    .form {
+        width: @form-width;
+        margin: 0 auto;
     }
 }

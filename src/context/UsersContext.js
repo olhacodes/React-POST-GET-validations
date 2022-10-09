@@ -1,36 +1,42 @@
 import React, { createContext, useState, useEffect, useRef } from 'react'; 
 
+
 export const UsersContext = createContext({});
 
 function UsersContextProvider({ children }) {
-    const [loading, setLoading] = useState(false);
-    const [setError] = useState(null);
-    const [users, setUsers] = useState([]);
-    const [page, setPage] = useState(1);
-    const myRef = useRef(null)
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [users, setUsers] = useState([]);
+  const [page, setPage] = useState(1);
+  const [isFormSubmitted, setIsFormSubmitted] = useState(null);
+
+  const API_URL = `https://frontend-test-assignment-api.abz.agency/api/v1/users?page=${page}&count=6`;
+
+  const usersRef = useRef(null);
+  const formRef = useRef(null);
+
+  const getUsersFromAPI = async () => {
+      setLoading(true);
+      await fetch(API_URL)
+        .then(response => response.json())
+        .then(data => {
+          if (data.success === true) {
+            setUsers([...users, ...data.users].sort((a, b) => b.registration_timestamp > a.registration_timestamp))
+            setPage(data.page)
+            setLoading(false)
+            }
+        })
+        .catch(error => {
+          console.log('Something went wrong', error)
+          setLoading(false)
+          setError(error)
+       })
+    }
     
   useEffect(() => {
-         const getUsersFromAPI = async () => {
-            setLoading(true);
-            await fetch(`https://frontend-test-assignment-api.abz.agency/api/v1/users?page=${page}&count=6`)
-                .then(response => response.json())
-                .then(data => {
-                  if (data.success === true) {
-                    setUsers([...users, ...data.users])
-                    setPage(data.page)
-                    setLoading(false)
-                      console.log(data, 'in data')
-                    }
-                })
-                .catch(error => {
-                    console.log('Something went wrong', error)
-                    setLoading(false)
-                    setError(error)
-            })
-        }
-        getUsersFromAPI()
+    getUsersFromAPI()
   }, [page])
-  
+
   function loadMore() {
     setPage(page + 1);
   }
@@ -41,7 +47,11 @@ function UsersContextProvider({ children }) {
       loading,
       loadMore,
       page,
-      myRef
+      usersRef,
+      formRef,
+      setIsFormSubmitted,
+      isFormSubmitted,
+      getUsersFromAPI
     }
 
   return (

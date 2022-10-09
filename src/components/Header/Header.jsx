@@ -4,24 +4,25 @@ import Button from '../Button/Button';
 import './header.styles.less';
 
 function Header() {
-  const { myRef } = useContext(UsersContext);
-  const executeScroll = () => myRef.current?.scrollIntoView({behavior: 'smooth'});
+  const { usersRef, formRef } = useContext(UsersContext);
+  const scrollToUsers = () => usersRef.current?.scrollIntoView({behavior: 'smooth'});
+  const scrollToForm = () => formRef.current?.scrollIntoView({behavior: 'smooth'});
 
   const btns = [
     {
       text: 'Users',
-      onClick: executeScroll,
+      onClick: scrollToUsers,
     },
     {
       text: 'Sign Up',
-      onClick: executeScroll,
+      onClick: scrollToForm,
     },
   ];
   
   return (
     <div className='header'>
       <div className='header__container'>
-        <img src='./assets/Logo.svg' alt='Logo' />
+        <img src='./images/Logo.svg' alt='Logo' />
               <div className='header__btns'>
                   {btns.map(btn => (
                       <Button key={btn.text} onClick={btn.onClick}>{btn.text}</Button>

@@ -1,17 +1,18 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './input.styles.less';
 
-function Input({ type, placeholder, helperText, accept, onClick }) {
-    const [name, setName] = useState('');
- 
+function Input({type, placeholder, helperText, accept, onClick, pattern, onChange}) {
+   
     return (
         <>
-            <input className='input' onChange={(e) => setName(e.target.value)} onClick={onClick}
-                value={name}
+            <input className={!pattern ? 'input__error' : 'input'}  
+                onChange={onChange}
                 type={type}
                 placeholder={placeholder}
+                onClick={onClick}
                 accept={accept}
-                />
+                pattern={pattern}
+            />
             {helperText ? <span className='input__helper-text'>{helperText}</span> : null}
         </>
   )

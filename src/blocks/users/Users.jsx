@@ -6,15 +6,15 @@ import { UsersContext } from '../../context/UsersContext';
 import './users.styles.less';
 
 function Users() {
-    const { users, loadMore, page, myRef} = useContext(UsersContext);
-    
+  const { users, loadMore, page, usersRef } = useContext(UsersContext);
+  
   return (
-      <div className='users' ref={myRef}>
+      <div className='users' ref={usersRef}>
             <div className="users__container">
               <h1>Working with GET request</h1>
               <div className="users__cards">
                   {users ? users.map(user => (
-                  <UserCard key={user.id} {...user} />))
+                  <UserCard key={Math.random()} {...user} />))
                   : 
                   <h1>No Users Found</h1>}
               </div>
