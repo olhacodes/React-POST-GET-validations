@@ -1,6 +1,3 @@
-@import '../../styles/variables.less';
-@import '../../styles/colors.less';
-
 .form {
     &__inputs {
         display: flex;
@@ -18,47 +15,9 @@
         gap: 0.4375rem;
     }
 
-    &__upload-input {
-        margin-top: 2.9375rem;
-
-        &--wrapper {
-            position: relative;
-            background-color: @white;
-        }
-
-        &--wrapper::after {
-            content:attr(dataText);
-            position: absolute;
-            font: @font;
-            color: @placeholder-color;
-            margin-left: -249px;
-            pointer-events: none;
-            background-color: #FFFFFF;
-            bottom: 0;
-            margin-bottom: 14px;
-            padding: 7px 16px;
-        }
-        
-        &--wrapper::before {
-            content: 'Upload';
-            position: absolute;
-            top: 0;
-            left: 0;
-            display: inline-block;
-            pointer-events: none;
-            padding: 0.875rem 0.9375rem;
-            border-color: @black;
-            border: 0.0625rem solid @black;
-            border-bottom-left-radius: 0.25rem;
-            border-top-left-radius: 0.25rem;
-            background-color: @white;
-        }
-    }
-
     &__action {
         padding-top: 3.125rem;
         margin: 0 auto;
         width: fit-content;
     }
-
 }

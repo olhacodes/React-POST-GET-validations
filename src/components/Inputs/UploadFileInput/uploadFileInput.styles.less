@@ -1,0 +1,70 @@
+@import '../../../styles/colors.less';
+@import '../../../styles/variables.less';
+@import '../../../styles/resolutions.less';
+
+.upload-input {
+        margin-top: 2.9375rem;
+
+    &--wrapper {
+        position: relative;
+        background-color: @white;
+    }
+
+    &--wrapper::after {
+        content:attr(dataText);
+        position: absolute;
+        font: @font;
+        color: @placeholder-color;
+        margin-left: -15.5625rem;
+        pointer-events: none;
+        background-color: #FFFFFF;
+        bottom: 0;
+        margin-bottom: 0.875rem;
+        padding: 0.4375rem 1rem;
+    }
+    
+    &--wrapper::before {
+        content: 'Upload';
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: inline-block;
+        pointer-events: none;
+        padding: 0.875rem 0.9375rem;
+        border-color: @black;
+        border: 0.0625rem solid @black;
+        border-bottom-left-radius: 0.25rem;
+        border-top-left-radius: 0.25rem;
+        background-color: @white;
+    }
+}
+
+@media(min-width: 22.5625rem) {
+    .upload-input--wrapper {
+        &::before {
+            padding: 0.875rem 1.9375rem;
+        }
+
+        &::after {
+            margin-left: -60%;
+        }
+    }
+}
+
+@media @tablet {
+    .upload-input--wrapper::after {
+         margin-left: -83%;
+    }
+}
+
+@media @small-desktop {
+    .upload-input--wrapper::after {
+         margin-left: -87%;
+    }
+}
+
+@media @desktop {
+    .upload-input--wrapper::after {
+         margin-left: -90%;
+    }
+}
