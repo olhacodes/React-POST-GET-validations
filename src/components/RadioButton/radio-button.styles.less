@@ -20,8 +20,8 @@
         position: absolute;
         left: 0;
         top: 0.1875rem;
-        width: 1.125rem;
-        height: 1.125rem;
+        width: @radio-btn-width;
+        height: @radio-btn-width;
         border: @border;
         border-radius: 100%;
     }
@@ -33,8 +33,8 @@
     input:checked + p:after,
     input:not(:checked) + p:after {
         content: '';
-        width: 0.625rem;
-        height: 0.625rem;
+        width: @radio-btn-checked-width;
+        height: @radio-btn-checked-width;
         background: @radio-btn-color;
         position: absolute;
         top: 0.5rem;

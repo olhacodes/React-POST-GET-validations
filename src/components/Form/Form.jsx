@@ -1,4 +1,5 @@
 import React, {useState} from 'react'; 
+import Button from '../Button/Button';
 import Input from '../Input/Input';
 import RadioButton from '../RadioButton/RadioButton';
 import './form.styles.less';
@@ -40,6 +41,7 @@ const positions = [
 
 function Form() {
     const [selectedRadioBtn, setSelectedRadioBtn] = useState(null);
+    const [isFileUploaded, setIsfileUploaded] = useState(false);
 
   return (
       <form className='form'>
@@ -56,6 +58,18 @@ function Form() {
                       onChange={() => setSelectedRadioBtn(position.id)}
                       {...position} />
               ))}
+          </div>
+          <div className="form__upload-input">
+              <div className={isFileUploaded ? '' : 'form__upload-input--wrapper'} dataText='Upload your photo'>
+                  <Input
+                  type="file"
+                      accept='image/*'
+                      onClick={() => setIsfileUploaded(true)}
+                  />
+              </div>
+              <div className="form__action">
+                  <Button>Sign up</Button>
+              </div>
           </div>
     </form>
   )
