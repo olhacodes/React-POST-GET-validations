@@ -6,7 +6,7 @@ export const UsersContext = createContext({});
 function UsersContextProvider({ children }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [users, setUsers] = useState([]);
+  let [users, setUsers] = useState([]);
   const [page, setPage] = useState(1);
   const [isFormSubmitted, setIsFormSubmitted] = useState(null);
 
@@ -36,7 +36,6 @@ function UsersContextProvider({ children }) {
     
   useEffect(() => {
     getUsersFromAPI()
-    console.log(users, 'in USERS')
   }, [page])
 
   function loadMore() {

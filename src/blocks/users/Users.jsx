@@ -6,7 +6,8 @@ import { UsersContext } from '../../context/UsersContext';
 import './users.styles.less';
 
 function Users() {
-  const { users, loadMore, page, usersRef } = useContext(UsersContext);
+  let { users, loadMore, page, usersRef } = useContext(UsersContext);
+  users = users.length > 6 ? users.slice(6) : users
   
   return (
       <div className='users' ref={usersRef}>
