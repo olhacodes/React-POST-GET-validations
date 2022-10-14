@@ -75,9 +75,6 @@ function Form() {
           formData.append('email', email);
           formData.append('phone', phone);
           formData.append('photo', file);
-
-          setLoading(true);
-          setIsFormSubmitted(true)
           
           return fetch(APIs.users,
             {
@@ -94,26 +91,23 @@ function Form() {
            if (data.status === 409) {
             setErrorMessage('User with this phone or email already exist')
             setError(true)
-            setLoading(false)
-            console.log(error, 'IN ERROR 409')
-          }
-
-          if (data.status === 401) {
+             
+          } else if (data.status === 401) {
             setErrorMessage('The token expired.')
             setError(true)
-            setLoading(false)
-            console.log(error, 'IN ERROR 401')
-          }
-
-          if (data.status === 422) {
+            
+          }else if (data.status === 422) {
             setError(true)
             setIsFormSubmitted(false)
-            setLoading(false)
+            
             setErrorMessage('Validation failed')
-          }
-
-          getUsersFromAPI()
+           } else {
+             getUsersFromAPI()
+             setLoading(true);
+             setIsFormSubmitted(true)
+           }
           setLoading(false)
+         
         })
         .catch((error) => {
           if (error instanceof Error) throw error
@@ -121,7 +115,9 @@ function Form() {
         })
       }
     }
-    
+  
+  const emailAndPhoneError = errorMessage === 'User with this phone or email already exist';
+
   let content;
     if (loading) {
       content = <Loader />
@@ -134,13 +130,17 @@ function Form() {
           <form className='form' onSubmit={onFormSubmit}>
             <div className="form__inputs">
               <Input type='text' placeholder='Your name'
-                onChange={(e) => setName(e.target.value)} pattern='[A-Za-zА-Яа-я]{2,}' />
-              <Input type='email' placeholder='Email' 
-                onChange={(e) => setEmail(e.target.value)} pattern="[a-zA-Z0-9!#$%'*+\/=?^_`{|}~.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*" />
+                onChange={(e) => setName(e.target.value)} pattern='[A-Za-zА-Яа-я]{2,}'
+                />
+              <Input type='email' placeholder='Email'
+                onChange={(e) => setEmail(e.target.value)}
+                pattern="[a-zA-Z0-9!#$%'*+\/=?^_`{|}~.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*"
+                 />
               <Input type='tel' placeholder='Phone'
                 onChange={(e) => setPhone(e.target.value)}
                 pattern='[+38]{3}[0-9]{3}[0-9]{3}[0-9]{2}[0-9]{2}'
-                helperText='+38 (XXX) XXX - XX - XX' />
+                helperText='+38 (XXX) XXX - XX - XX'
+                />
             </div>
             <p className='form__select-title'>Select your position</p>
             <div className="form__radio-buttons">
@@ -153,7 +153,7 @@ function Form() {
                 />
               ))}
             </div>
-            <UploadFileInput error={error} errorMessage={errorMessage} fileInputRef={fileInputRef} />
+            <UploadFileInput errorMessage={errorMessage} fileInputRef={fileInputRef} />
             <div className="form__action">
               <Button className='disabled'>Sign up</Button>
             </div>
