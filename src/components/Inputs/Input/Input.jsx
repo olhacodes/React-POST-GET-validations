@@ -12,6 +12,7 @@ function Input({type, placeholder, helperText, accept, onClick, pattern, onChang
                 onClick={onClick}
                 accept={accept}
                 pattern={pattern}
+                required
             />
             {helperText ? <span className='input__helper-text'>{helperText}</span> : null}
         </>

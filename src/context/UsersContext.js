@@ -23,6 +23,7 @@ function UsersContextProvider({ children }) {
           if (data.success === true) {
             setUsers([...users, ...data.users].sort((a, b) => b.registration_timestamp > a.registration_timestamp))
             setPage(data.page)
+            console.log(data, 'in data')
             setLoading(false)
             }
         })
@@ -35,6 +36,7 @@ function UsersContextProvider({ children }) {
     
   useEffect(() => {
     getUsersFromAPI()
+    console.log(users, 'in USERS')
   }, [page])
 
   function loadMore() {

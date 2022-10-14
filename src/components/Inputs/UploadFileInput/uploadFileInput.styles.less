@@ -1,11 +1,17 @@
 @import '../../../styles/colors.less';
 @import '../../../styles/variables.less';
 @import '../../../styles/resolutions.less';
+@import '../../../styles/mixins.less';
 
 @input-height: 3.37rem;
 
 .upload-input {
         margin-top: 2.9375rem;
+
+        &--error {
+            border: 0.125rem solid @error-color;
+            border-radius: 0.25rem;
+        }
 
     &__wrapper {
         position: relative;
@@ -13,8 +19,8 @@
         height: @input-height;
 
         &--uploaded::after {
-        z-index: -99;
-        margin: 0;
+            z-index: -99;
+            margin: 0;
     }
 
     }
@@ -57,6 +63,17 @@
     &--uploaded {
         color: @black;
         height: @input-height;
+    }
+
+    &__wrapper--error::before {
+        border-color: @error-color!important;
+        border-top: 0;
+        border-left: 0;
+    }
+
+    &__helper-text {
+        .mx-helper-text();
+        color: @error-color;
     }
 }
 

@@ -1,5 +1,6 @@
 @import '../../../styles/colors.less';
 @import '../../../styles/variables.less';
+@import '../../../styles/mixins.less';
 
 .input {
     border: @border;
@@ -10,10 +11,7 @@
 
     &__helper-text {
         color: @placeholder-color;
-        font-size: 0.75rem;
-        line-height: 0.875rem;
-        margin-top: -3.125rem;
-        padding-left: 5%;
+        .mx-helper-text();
 }
 
     &__error {
