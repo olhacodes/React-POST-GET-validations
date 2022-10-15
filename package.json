@@ -2,11 +2,9 @@
   "name": "abz-agency",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://main--nimble-dango-12febc.netlify.app/",
   "dependencies": {
     "@craco/craco": "^5.5.0",
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.3.0",
-    "@testing-library/user-event": "^13.5.0",
     "axios": "^1.1.2",
     "babel-eslint": "^10.1.0",
     "craco-less": "^2.0.0",
