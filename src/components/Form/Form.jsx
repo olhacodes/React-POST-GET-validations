@@ -116,8 +116,6 @@ function Form() {
       }
     }
   
-  const emailAndPhoneError = errorMessage === 'User with this phone or email already exist';
-
   let content;
     if (loading) {
       content = <Loader />
@@ -126,20 +124,21 @@ function Form() {
     } else {
       content = (
         <>
-          {error ? <p style={{ color: '#CB3D40', textAlign: 'center' }}>{errorMessage}</p> : null}
           <form className='form' onSubmit={onFormSubmit}>
             <div className="form__inputs">
-              <Input type='text' placeholder='Your name'
+              <Input type='text' label='Your name'
                 onChange={(e) => setName(e.target.value)} pattern='[A-Za-zА-Яа-я]{2,}'
                 />
-              <Input type='email' placeholder='Email'
+              <Input type='email' label='Email'
                 onChange={(e) => setEmail(e.target.value)}
                 pattern="[a-zA-Z0-9!#$%'*+\/=?^_`{|}~.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*"
+                errorMessage={errorMessage === 'User with this phone or email already exist' ? 'User with this phone or email already exist' : ''}
                  />
-              <Input type='tel' placeholder='Phone'
+              <Input type='tel' label='Phone'
                 onChange={(e) => setPhone(e.target.value)}
                 pattern='[+38]{3}[0-9]{3}[0-9]{3}[0-9]{2}[0-9]{2}'
                 helperText='+38 (XXX) XXX - XX - XX'
+                errorMessage={errorMessage === 'User with this phone or email already exist' ? 'User with this phone or email already exist' : ''}
                 />
             </div>
             <p className='form__select-title'>Select your position</p>

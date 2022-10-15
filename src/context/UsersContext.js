@@ -16,8 +16,14 @@ function UsersContextProvider({ children }) {
   const formRef = useRef(null);
 
   const getUsersFromAPI = async () => {
+
       setLoading(true);
-      await fetch(API_URL)
+      await fetch(API_URL, {
+        method: 'GET',
+        headers: {
+           accept: 'application/json',
+        }
+    })
         .then(response => response.json())
         .then(data => {
           if (data.success === true) {

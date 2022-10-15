@@ -1,21 +1,21 @@
 import React from 'react';
 import './input.styles.less';
 
-function Input({type, placeholder, helperText, accept, onClick, pattern, onChange}) {
-   
+function Input({ type, label, helperText, pattern, onChange, errorMessage }) {
+    
     return (
-        <>
-            <input className={!pattern ? 'input__error' : 'input'}  
+        <div className='input__group'>
+            <input className={`input input${errorMessage ? '--error' : ''}`}  
                 onChange={onChange}
                 type={type}
-                placeholder={placeholder}
-                onClick={onClick}
-                accept={accept}
                 pattern={pattern}
                 required
+                placeholder=' '
             />
+            <label className='input__label' htmlFor="">{label}</label>
             {helperText ? <span className='input__helper-text'>{helperText}</span> : null}
-        </>
+            {errorMessage ? <span className='input__helper-text--error'>{errorMessage}</span> : null}
+        </div>
   )
 }
 

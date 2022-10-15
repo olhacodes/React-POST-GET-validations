@@ -1,7 +1,7 @@
 # Getting Started with Create React App
 https://main--nimble-dango-12febc.netlify.app/
 
-primarily built using React, API, pure LESS, BEM
+primarily built using React, API, pure LESS, BEM, CRACO
 
 * Implemented the “Working with a GET request” block according to the mockup and API documentation.
 * Displays 6 users on the API request result page. 

@@ -8,16 +8,39 @@
     width: -webkit-fill-available;
     padding: 0.875rem 0 0.875rem 1rem;
     transition: border-color 0.2s;
+    outline: none;
+    background-color: @body-bg;
 
     &__helper-text {
         color: @placeholder-color;
         .mx-helper-text();
-}
+    }
+
+    &__group {
+        position: relative;
+    }
+
+    &__label {
+        position: absolute;
+        top: 0.625rem;
+        left: 0.5rem;
+        padding: 0 0.3125rem;
+        color: @placeholder-color;
+        transition: 0.3s;
+        pointer-events: none;
+    }
 
     &__error {
         border: 0.125rem solid @error-color;
     }
+
 }
+
+ .input:focus + .input__label, .input:not(:placeholder-shown) + .input__label {
+        top: -0.9375rem;
+        background-color: @body-bg;
+    }
+
 
 ::-webkit-file-upload-button {
    display: none;
