@@ -99,8 +99,7 @@ function Form() {
           }else if (data.status === 422) {
             setError(true)
             setIsFormSubmitted(false)
-            
-            setErrorMessage('Validation failed')
+            setErrorMessage('Validation failed. Please reload the page and try again')
            } else {
              getUsersFromAPI()
              setLoading(true);
@@ -116,6 +115,16 @@ function Form() {
       }
     }
   
+  function renderErrorMessage() {
+    if(error) {
+      return (
+        <p style={{ color: '#CB3D40', textAlign: 'center', marginBottom: '2rem' }}>
+            {errorMessage === 'User with this phone or email already exist' ? null : errorMessage}
+        </p>
+      )
+    }
+  }
+  
   let content;
     if (loading) {
       content = <Loader />
@@ -123,7 +132,8 @@ function Form() {
       content = <SuccesMessage />
     } else {
       content = (
-        <>
+        <div>
+          {renderErrorMessage()}
           <form className='form' onSubmit={onFormSubmit}>
             <div className="form__inputs">
               <Input type='text' label='Your name'
@@ -157,7 +167,7 @@ function Form() {
               <Button className='disabled'>Sign up</Button>
             </div>
           </form>
-        </>
+        </div>
       )
     }
     

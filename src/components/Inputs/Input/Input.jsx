@@ -12,8 +12,8 @@ function Input({ type, label, helperText, pattern, onChange, errorMessage }) {
                 required
                 placeholder=' '
             />
-            <label className='input__label' htmlFor="">{label}</label>
-            {helperText ? <span className='input__helper-text'>{helperText}</span> : null}
+            <label className={`input__label input__label${errorMessage ? '--error' : ''}`} htmlFor="">{label}</label>
+            {helperText ? <span className={!errorMessage ? 'input__helper-text' : 'input__helper-text--hide'}>{helperText}</span> : null}
             {errorMessage ? <span className='input__helper-text--error'>{errorMessage}</span> : null}
         </div>
   )
